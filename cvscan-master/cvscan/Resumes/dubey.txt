@@ -1,0 +1,63 @@
+package files;
+import java.awt.*;
+import java.util.*;
+import java.io.*;
+import java.lang.*;
+public class TicTacToe {
+
+    public static void main(String... s)throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\\\Users\\\\abhin\\\\Desktop\\\\abc.txt")));
+        try {
+            String line;
+            while((line = br.readLine()) != null) {
+                String[] patt = line.split(" ");
+
+                for(String word : patt) {
+                    if(!(word.equals("end"))){
+                        int len = word.length(), xcount=0, ocount=0;
+                        char winner = '';
+                        for(int i=0; i<len; i++){
+                            if(word.charAt(i)=='X')
+                                xcount++;
+                            else if(word.charAt(i)=='O')
+                                ocount++;
+                        }
+                        //System.out.print(xcount+" ");
+                        //System.out.println(ocount+" ");
+
+                            if ((xcount-ocount) == 1){
+                            if((word.charAt(0) == word.charAt(4)) && (word.charAt(4) == word.charAt(8)))
+                                winner = word.charAt(0);
+                            else if((word.charAt(2) == word.charAt(4)) && (word.charAt(4) == word.charAt(6)))
+                                winner = word.charAt(2);
+                            else if((word.charAt(0) == word.charAt(3)) && (word.charAt(3) == word.charAt(6)))
+                                winner = word.charAt(0);
+                            else if((word.charAt(1) == word.charAt(4)) && (word.charAt(4) == word.charAt(7)))
+                                winner = word.charAt(1);
+                            else if((word.charAt(2) == word.charAt(5)) && (word.charAt(5) == word.charAt(8)))
+                                winner = word.charAt(2);
+                            else if((word.charAt(0) == word.charAt(1)) && (word.charAt(1) == word.charAt(2)))
+                                winner = word.charAt(0);
+                            else if((word.charAt(3) == word.charAt(4)) && (word.charAt(4) == word.charAt(5)))
+                                winner = word.charAt(3);
+                            else if((word.charAt(6) == word.charAt(7)) && (word.charAt(7) == word.charAt(8)))
+                                winner = word.charAt(6);
+                        }
+                        if(winner)
+                            else
+                                System.out.println("Invalid");
+
+                    }
+                }
+
+                //System.out.println(line);
+
+            }
+        }
+        finally {
+            br.close();
+        }
+
+    }
+}
