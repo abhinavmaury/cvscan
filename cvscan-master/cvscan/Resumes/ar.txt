@@ -1,0 +1,5 @@
+sum = x O(n)
+subarray = O(n)
+0010
+012
+
